@@ -6,6 +6,7 @@ import ru.AndyTech.Interface.StudentList;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StudentArray implements StudentList {
@@ -26,18 +27,32 @@ public class StudentArray implements StudentList {
 
     @Override
     public Student getOne(int id) {
-        if (id < 0 || id >= array.size())
-            return null;
-        return array.stream().findFirst(a -> a.id == id);
+        return array.stream()
+                .filter(student -> student.GetID() == id).findFirst()
+                .orElse(null);
     }
 
     @Override
     public void deleteOne(int id) {
-
+        array = (ArrayList<Student>) array.stream()
+                .filter(student -> student.GetID() != id)
+                .collect(Collectors.toList());
     }
 
     @Override
     public void editOne(int id, Student value) {
+        array = (ArrayList<Student>) array.stream()
+                .map(student -> student.GetID() == id ? value : student)
+                .collect(Collectors.toList());
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("Array: ");
+        for (Student student :
+                array) {
+            result.append(student.toString());
+        }
+        return result.toString();
     }
 }

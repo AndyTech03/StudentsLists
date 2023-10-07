@@ -34,13 +34,12 @@ public class StudentArray implements StudentList {
 
     @Override
     public void deleteOne(int id) {
-        array = (ArrayList<Student>) array.stream()
-                .filter(student -> student.GetID() != id)
-                .collect(Collectors.toList());
+        array.removeIf(student -> student.GetID() == id);
     }
 
     @Override
     public void editOne(int id, Student value) {
+        value.SetID(id);
         array = (ArrayList<Student>) array.stream()
                 .map(student -> student.GetID() == id ? value : student)
                 .collect(Collectors.toList());

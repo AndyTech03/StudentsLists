@@ -22,8 +22,11 @@ public class App {
         );
         array.add(student);
         id = array.add(student);
+        System.out.println(array);
+
         array.editOne(id, new Student("Иван", "Иванов", "Иванович", "Б761-2"));
         System.out.println(array);
+
         array.deleteOne(id);
         System.out.println(array);
     }

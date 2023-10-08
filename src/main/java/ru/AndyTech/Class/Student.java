@@ -1,4 +1,4 @@
-package ru.AndyTech.Interface;
+package ru.AndyTech.Class;
 
 public class Student {
     int id;
@@ -23,12 +23,16 @@ public class Student {
         this.groupCode = groupCode;
     }
 
-    public int GetID(){
-        return id;
+    public Student(int id, Student value) {
+        this.id = id;
+        this.firstName = value.firstName;
+        this.middleName = value.middleName;
+        this.lastName = value.lastName;
+        this.groupCode = value.groupCode;
     }
 
-    public void SetID(int id){
-        this.id = id;
+    public int GetID(){
+        return id;
     }
 
     @Override
@@ -52,12 +56,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Student {" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", groupCode='" + groupCode + '\'' +
+                ", name='" + firstName +
+                " " + middleName +
+                " " + lastName + "'" +
+                ", groupCode='" + groupCode + "'" +
                 '}';
     }
 }

@@ -1,17 +1,19 @@
 package ru.AndyTech.Class;
 
-import ru.AndyTech.Interface.Student;
 import ru.AndyTech.Interface.StudentList;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StudentArray implements StudentList {
     int ID = 0;
     ArrayList<Student> array = new ArrayList<>();
+
+    @Override
+    public int size() {
+        return array.size();
+    }
 
     @Override
     public List<Student> getAll() {
@@ -20,9 +22,9 @@ public class StudentArray implements StudentList {
 
     @Override
     public int add(Student value) {
-        value.SetID(ID++);
-        array.add(value);
-        return value.GetID();
+        Student item = new Student(ID++, value);
+        array.add(item);
+        return item.GetID();
     }
 
     @Override
@@ -39,19 +41,23 @@ public class StudentArray implements StudentList {
 
     @Override
     public void editOne(int id, Student value) {
-        value.SetID(id);
+        Student item = new Student(id, value);
         array = (ArrayList<Student>) array.stream()
-                .map(student -> student.GetID() == id ? value : student)
+                .map(student -> student.GetID() == id ? item : student)
                 .collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Array: ");
+        StringBuilder result = new StringBuilder("Array {\n");
         for (Student student :
                 array) {
+            result.append("\t");
             result.append(student.toString());
+            result.append(",\n");
         }
+        result.delete(result.length() - 2, result.length());
+        result.append("\n}");
         return result.toString();
     }
 }

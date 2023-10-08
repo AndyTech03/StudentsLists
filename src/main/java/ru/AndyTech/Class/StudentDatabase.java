@@ -1,11 +1,15 @@
 package ru.AndyTech.Class;
 
-import ru.AndyTech.Interface.Student;
 import ru.AndyTech.Interface.StudentList;
 
 import java.util.List;
 
 public class StudentDatabase implements StudentList {
+    @Override
+    public int size() {
+        return 0;
+    }
+
     @Override
     public List<Student> getAll() {
         return null;

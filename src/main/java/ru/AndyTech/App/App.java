@@ -1,6 +1,7 @@
 package ru.AndyTech.App;
 
 import ru.AndyTech.Class.StudentArray;
+import ru.AndyTech.Class.StudentDatabase;
 import ru.AndyTech.Class.StudentFile;
 import ru.AndyTech.Class.Student;
 import ru.AndyTech.Interface.StudentList;
@@ -9,23 +10,13 @@ public class App {
     public static void main(String[] args) {
         StudentList list;
         list = new StudentArray();
-        //testList(list);
+        testList(list);
+
         list = new StudentFile();
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        int id = list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        list.add(new Student("Иван", "И", "И", "Г1"));
-        System.out.println(list.getAll());
-        System.out.println(list.getOne(1));
-        list.deleteOne(id);
-        System.out.println(list.getAll());
-        list.editOne(id+1, new Student("Петров", "П", "П", "Г2"));
-        System.out.println(list.getAll());
-        //testList(list);
+        testList(list);
+
+        list = new StudentDatabase();
+        testList(list);
     }
 
     private static void testList(StudentList list)

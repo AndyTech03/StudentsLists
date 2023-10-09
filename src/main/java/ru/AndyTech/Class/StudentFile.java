@@ -280,4 +280,18 @@ public class StudentFile implements StudentList
             }
         });
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("File {\n");
+        for (Student student :
+                getAll()) {
+            result.append("\t");
+            result.append(student.toString());
+            result.append(",\n");
+        }
+        result.delete(result.length() - 2, result.length());
+        result.append("\n}");
+        return result.toString();
+    }
 }

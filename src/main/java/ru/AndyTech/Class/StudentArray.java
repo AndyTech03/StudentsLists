@@ -24,26 +24,26 @@ public class StudentArray implements StudentList {
     public int add(Student value) {
         Student item = new Student(ID++, value);
         array.add(item);
-        return item.GetID();
+        return item.getID();
     }
 
     @Override
     public Student getOne(int id) {
         return array.stream()
-                .filter(student -> student.GetID() == id).findFirst()
+                .filter(student -> student.getID() == id).findFirst()
                 .orElse(null);
     }
 
     @Override
     public void deleteOne(int id) {
-        array.removeIf(student -> student.GetID() == id);
+        array.removeIf(student -> student.getID() == id);
     }
 
     @Override
     public void editOne(int id, Student value) {
         Student item = new Student(id, value);
         array = (ArrayList<Student>) array.stream()
-                .map(student -> student.GetID() == id ? item : student)
+                .map(student -> student.getID() == id ? item : student)
                 .collect(Collectors.toList());
     }
 

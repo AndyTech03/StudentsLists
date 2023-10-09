@@ -31,7 +31,7 @@ public class Student {
         this.groupCode = value.groupCode;
     }
 
-    public int GetID(){
+    public int getID(){
         return id;
     }
 
